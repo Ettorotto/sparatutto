@@ -1,5 +1,6 @@
 /**
- * TODO: voglio fare che ce 1 possibilita su 10 che il target sia dorato, e che quando cliccato da ben 10 punti! pero hai solo 600ms per cliccarlo!
+ * TODO: fare un pulsante di pausa che ferma il gioco, ossia ferma il quadrato e il cronometro. 
+ * TODO: e al centro appare molto in grande la scitta di pausa, riducendo la luminosita di tutto quello che ce dietro
  */
     let target = document.getElementById("target");
     let punti = document.getElementById("punti");
@@ -11,9 +12,9 @@
     //? mi ha detto di separare record come elemento dall'HTML e record come numero per farlo funzionare, io stavo facendo tutto con una sola variabile... daje impariamo sempre cose nuove
 
     let punteggio = 0;
-    let tempo_tra_spostamenti_base = prompt("inserisci in millisecondi la velocita del bersaglio");
+    const tempo_tra_spostamenti_base = prompt("inserisci in millisecondi la velocita del bersaglio");
     let tempo_tra_spostamenti = tempo_tra_spostamenti_base;
-    let modalita = prompt("che modalita vuoi fare?\n-west\n-slime");
+    const modalita = prompt("che modalita vuoi fare?\n-west\n-slime");
     let punti_per_target=1
 
     target.addEventListener("click", spostalo);
@@ -23,6 +24,7 @@
 
     function spostalo()
     {
+        tempo_tra_spostamenti = tempo_tra_spostamenti_base;
 
         let w = window.innerWidth-100;
         let h = window.innerHeight-100;
@@ -47,7 +49,7 @@
             tempo_tra_spostamenti = tempo_tra_spostamenti_base / 1.5;
         }
 
-        console.log("Punti per questo target: " + punti_per_target + " Tempo per lo spostamento: " +  tempo_tra_spostamenti);
+        console.log("Punti per questo target: " + punti_per_target + ", Tempo per lo spostamento: " +  tempo_tra_spostamenti);
     }
 
     //funzione che si avvia ogni volta che l'utente prende il bersaglio
