@@ -7,6 +7,15 @@
         top: 500;
     }
 
+    #pause {
+
+        width: 60;
+        height: 60;
+        background-color: crimson;
+        background-image: url("/contents/pause_icon.png");
+
+    }
+
     body{
         background-image: url("/contents/farwest.jpg");
         background-repeat: no-repeat;

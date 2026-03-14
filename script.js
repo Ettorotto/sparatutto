@@ -22,6 +22,7 @@
 
     let spostamento_programamto = setInterval(spostalo,tempo_tra_spostamenti_base ); //set interVal fara la funzione spostalo ogni 2000 millisecondi (2 secondi)
 
+    //funzione per spostare il target
     function spostalo()
     {
         tempo_tra_spostamenti = tempo_tra_spostamenti_base;
@@ -41,12 +42,11 @@
         target.style.backgroundColor = ""; // torna allo stile di default (CSS)
         punti_per_target = 1;
 
-        // 1 possibilità su 10 che il bersaglio sia dorato
+        //* 1 possibilità su 10 che il bersaglio sia dorato
         if (rarita <= 0.1) {
-            // per un quadrato/div bisogna cambiare il background, non il color
             target.style.backgroundColor = "gold"; // apparirà giallo/dorato
-            punti_per_target = 10;
-            tempo_tra_spostamenti = (tempo_tra_spostamenti_base * 75) / 100;
+            punti_per_target = 10; // metto i punti a 10 per questo target
+            tempo_tra_spostamenti = (tempo_tra_spostamenti_base * 75) / 100; // il tempo per prendere quello d'oro sara del 75% rispetto al tempo base prestabilto dall'utente
         }
 
         console.log("Punti per questo target: " + punti_per_target + ", Tempo per lo spostamento: " +  tempo_tra_spostamenti);
@@ -95,12 +95,3 @@
     }
 
 
-    
-
-
-
-
-
-
-
-    
