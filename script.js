@@ -21,7 +21,6 @@
 
     function spostalo()
     {
-        
 
         let w = window.innerWidth-100;
         let h = window.innerHeight-100;
@@ -34,8 +33,14 @@
 
         let rarita = Math.random();
         
-        if(rarita<=0.1){
-            target.style.color = "yellow";
+        // reset eventuale colore/stato precedente
+        target.style.backgroundColor = ""; // torna allo stile di default (CSS)
+        punti_per_target = 1;
+
+        // 1 possibilità su 10 che il bersaglio sia dorato
+        if (rarita <= 0.1) {
+            // per un quadrato/div bisogna cambiare il background, non il color
+            target.style.backgroundColor = "gold"; // apparirà giallo/dorato
             punti_per_target = 10;
         }
 
@@ -63,7 +68,7 @@
 
         punti_per_target = 1;
 
-        console.log("PUNTO-" + Cronometro + " - " + record);
+        console.log("PUNTO- " + Cronometro + " - " + record);
     }
 
     /**
