@@ -7,17 +7,19 @@
     
     let recordEl = document.getElementById("record");
     let record = Infinity; // best time in ms (lower is better). Infinity means "no record yet"
-    //ok per questo o chiesto a una chatIA perche non apivo perche il record non funzionasse. 
+    //ok per questo o chiesto a una chatIA perche non capivo perche il record non funzionasse. 
     //? mi ha detto di separare record come elemento dall'HTML e record come numero per farlo funzionare, io stavo facendo tutto con una sola variabile... daje impariamo sempre cose nuove
 
     let punteggio = 0;
-    let tempo_tra_spostamenti = prompt("inserisci in millisecondi la velocita del bersaglio");
+    let tempo_tra_spostamenti_base = prompt("inserisci in millisecondi la velocita del bersaglio");
+    let tempo_tra_spostamenti = tempo_tra_spostamenti_base;
+    let modalita = prompt("che modalita vuoi fare?\n-west\n-slime");
     let punti_per_target=1
 
     target.addEventListener("click", spostalo);
     target.addEventListener("click", segnaPunto);
 
-    let spostamento_programamto = setInterval(spostalo,tempo_tra_spostamenti ); //set interVal fara la funzione spostalo ogni 2000 millisecondi (2 secondi)
+    let spostamento_programamto = setInterval(spostalo,tempo_tra_spostamenti_base ); //set interVal fara la funzione spostalo ogni 2000 millisecondi (2 secondi)
 
     function spostalo()
     {
@@ -42,9 +44,10 @@
             // per un quadrato/div bisogna cambiare il background, non il color
             target.style.backgroundColor = "gold"; // apparirà giallo/dorato
             punti_per_target = 10;
+            tempo_tra_spostamenti = tempo_tra_spostamenti_base / 1.5;
         }
 
-        console.log(x, ", ",y);
+        console.log("Punti per questo target: " + punti_per_target + " Tempo per lo spostamento: " +  tempo_tra_spostamenti);
     }
 
     //funzione che si avvia ogni volta che l'utente prende il bersaglio
@@ -88,6 +91,14 @@
     function Cronometro_reset(){
         Cronometro=0;
     }
+
+
+    
+
+
+
+
+
 
 
     
