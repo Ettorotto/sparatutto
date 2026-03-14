@@ -8,7 +8,7 @@
     }
 
     body{
-        background-image: url("farwest.jpg");
+        background-image: url("/contents/farwest.jpg");
         background-repeat: no-repeat;
         background-size: 100%;
     }

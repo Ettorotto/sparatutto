@@ -1,0 +1,2 @@
+devo scrivere qui lo scopo del siot e tutte le singole funzioni del giochino e come funzionano per advevro nel codice... ci mettero un po. ma lo faccio dopo aver finito.
+forse sarebbe meglio se lo scrivesis man mano che vado avanti ma non ho voglia :P

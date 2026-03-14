@@ -46,7 +46,7 @@
             // per un quadrato/div bisogna cambiare il background, non il color
             target.style.backgroundColor = "gold"; // apparirà giallo/dorato
             punti_per_target = 10;
-            tempo_tra_spostamenti = tempo_tra_spostamenti_base / 1.5;
+            tempo_tra_spostamenti = (tempo_tra_spostamenti_base * 75) / 100;
         }
 
         console.log("Punti per questo target: " + punti_per_target + ", Tempo per lo spostamento: " +  tempo_tra_spostamenti);
