@@ -111,11 +111,29 @@
      * per prima cosa creo un evento che ascolta il pulsante dall HTML
      * 
      * si sostituisce a un "play button" per riprednere il gioco
+     * 
+     * creo una variabile booleana per tenere conto se il gioco è in corso o fermo.
+     * 
+     * faccio due funzioni diverse per fermare, e riprendere il gioco. si alternano a vicenda.
      */
 
         let pause = document.getElementById("pause");
 
-        pause.addEventListener("click", pausa);
+        
+        pause.addEventListener("click", bottone_di_pausa);
+
+        let is_paused=false;
+
+        function bottone_di_pausa(){
+        
+            if(is_paused==false){
+                pausa();
+            }
+            else{
+                riprendi();
+            }
+        }
+
 
 
         function pausa(){
@@ -131,8 +149,27 @@
 
 
             pause.style.backgroundImage = 'url("contents/play.png")'
+            //uhhhhhhh l'immagine non mi piace tanto.... ne cercher'ò una nuova piu bella piu tardi.
 
+            is_paused = true;
+
+            console.log("GIOCO MESSO IN PAUSA");
         }
 
+        //questa è la funzione per riprendere il gioco e può essere 
+        function riprendi(){
 
+            //rimetto gli eventi e gli intervalli
+            target.addEventListener("click", spostalo);
+            target.addEventListener("click", segnaPunto);
 
+            spostamento_programmato = setInterval(spostalo,tempo_tra_spostamenti_base );
+            intervallo_cronometro = setInterval(Cronometro_plus,1);
+
+            pause.style.backgroundImage = 'url("contents/pause_icon.png")'
+
+            is_paused = false;
+
+            console.log("GIOCO RIPRESO"); 
+
+        }
