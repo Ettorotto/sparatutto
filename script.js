@@ -93,7 +93,7 @@
 
    let Cronometro = 0;
 
-    setInterval(Cronometro_plus,1);
+    let intervallo_cronometro = setInterval(Cronometro_plus,1);
 
     function Cronometro_plus(){
         Cronometro++;
@@ -102,5 +102,37 @@
     function Cronometro_reset(){
         Cronometro=0;
     }
+
+
+    /**
+     * TODO: bottone di pausa.
+     * *deve fermare il gioco, quindi fermare il target e mettere in sospensione il cronometro
+     * voglio anche che "spenga" il resto dellos chermo, quindi deve abbassare la luminosita del resto dello schermo
+     * per prima cosa creo un evento che ascolta il pulsante dall HTML
+     * 
+     * si sostituisce a un "play button" per riprednere il gioco
+     */
+
+        let pause = document.getElementById("pause");
+
+        pause.addEventListener("click", pausa);
+
+
+        function pausa(){
+
+            //rimuovo temporaneamente gli eventListener, cosi l'utente non puo piu interagire con il target una volta in pausa.
+            target.removeEventListener("click", spostalo);
+            target.removeEventListener("click", segnaPunto);
+
+            //poi elimino gli intervalli, cosi il target non si sposta piu e il cronometro si ferma.
+            clearInterval(spostamento_programmato);
+            clearInterval(intervallo_cronometro);
+
+
+
+            pause.style.backgroundImage = 'url("contents/play.png")'
+
+        }
+
 
 
