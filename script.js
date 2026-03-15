@@ -1,6 +1,8 @@
 /**
  * TODO: fare un pulsante di pausa che ferma il gioco, ossia ferma il quadrato e il cronometro. 
  * TODO: e al centro appare molto in grande la scitta di pausa, riducendo la luminosita di tutto quello che ce dietro
+ * 
+ * TODO: slime in cui cambia lo sfondo e il target con altre icone
  */
     let target = document.getElementById("target");
     let punti = document.getElementById("punti");
@@ -14,13 +16,12 @@
     let punteggio = 0;
     const tempo_tra_spostamenti_base = prompt("inserisci in millisecondi la velocita del bersaglio");
     let tempo_tra_spostamenti = tempo_tra_spostamenti_base;
-    const modalita = prompt("che modalita vuoi fare?\n-west\n-slime");
     let punti_per_target=1
 
     target.addEventListener("click", spostalo);
     target.addEventListener("click", segnaPunto);
 
-    let spostamento_programamto = setInterval(spostalo,tempo_tra_spostamenti_base ); //set interVal fara la funzione spostalo ogni 2000 millisecondi (2 secondi)
+    let spostamento_programmato = setInterval(spostalo,tempo_tra_spostamenti_base ); //set interVal fara la funzione spostalo ogni 2000 millisecondi (2 secondi)
 
     //funzione per spostare il target
     function spostalo()
@@ -38,15 +39,22 @@
 
         let rarita = Math.random();
         
-        // reset eventuale colore/stato precedente
-        target.style.backgroundColor = ""; // torna allo stile di default (CSS)
+        // reset eventuale immagine/stato precedente: usa l'immagine di default (PinkSlime)
+        target.style.backgroundImage = 'url("contents/PinkSlime.webp")';
+        target.style.backgroundSize = 'cover';
+        target.style.backgroundPosition = 'center';
+        target.style.backgroundColor = ""; // se eri impostando un colore, rimuovilo
         punti_per_target = 1;
 
         //* 1 possibilità su 10 che il bersaglio sia dorato
         if (rarita <= 0.1) {
-            target.style.backgroundColor = "gold"; // apparirà giallo/dorato
-            punti_per_target = 10; // metto i punti a 10 per questo target
-            tempo_tra_spostamenti = (tempo_tra_spostamenti_base * 75) / 100; // il tempo per prendere quello d'oro sara del 75% rispetto al tempo base prestabilto dall'utente
+            // usa l'immagine dorata se presente nella cartella contents
+            target.style.backgroundImage = 'url("contents/GoldSlime.png")';
+            target.style.backgroundSize = 'cover';
+            punti_per_target = 10; // assegna 10 punti per questo bersaglio
+            tempo_tra_spostamenti = (tempo_tra_spostamenti_base * 75) / 100; // il tempo per prendere quello d'oro sara del 75% rispetto al tempo base
+
+            
         }
 
         console.log("Punti per questo target: " + punti_per_target + ", Tempo per lo spostamento: " +  tempo_tra_spostamenti);
@@ -54,6 +62,8 @@
 
     //funzione che si avvia ogni volta che l'utente prende il bersaglio
     function segnaPunto(){
+        
+        console.log("PRESO!!! \n Tempo per questo target: " + spostamento_programmato + ", Punti assegnati: " + punti_per_target );
 
         tempo.innerHTML = "Tempo: " + Cronometro + "ms";
 
@@ -66,14 +76,13 @@
         punteggio += punti_per_target;   // assegno il punto e lo scrivo
         punti.innerHTML = "Punti : " + punteggio;
 
-        clearInterval(spostamento_programamto);
-        spostamento_programamto = setInterval(spostalo,tempo_tra_spostamenti);
+        clearInterval(spostamento_programmato);
+        spostamento_programmato = setInterval(spostalo,tempo_tra_spostamenti);
 
         Cronometro_reset();
 
         punti_per_target = 1;
 
-        console.log("PUNTO- " + Cronometro + " - " + record);
     }
 
     /**
